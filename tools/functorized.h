@@ -29,70 +29,76 @@ struct function_name_functor
    R operator()(args) const { code }
 };
 
-*/  
+*/
 
-template <typename T> 
+template <typename T>
 // multiplicative semigroup
-inline
-T square(const T& x) { return x * x; }
+inline T square(const T& x)
+{
+    return x * x;
+}
 
 struct square_functor {
-  template <typename T>
-  T operator()(const T& x) const { 
-    return square(x); 
-  }
-}; 
-
-struct sort_functor
-{
-  template <typename I> 
-  // I is random-access iterator
-  void operator()(I first, I last) const { 
-    std::sort(first, last); 
-  }
+    template <typename T>
+    T operator()(const T& x) const
+    {
+        return square(x);
+    }
 };
 
-struct sort_unique_functor
-{
-  template <typename I> 
-  // I is random-access iterator
-  I operator()(I first, I last) const { 
-    std::sort(first, last); 
-    return std::unique(first, last); 
-  }
+struct sort_functor {
+    template <typename I>
+    // I is random-access iterator
+    void operator()(I first, I last) const
+    {
+        std::sort(first, last);
+    }
 };
 
-struct setsort_functor
-{
-  template <typename I> 
-  // I is forward iterator
-  void operator()(I first, I last) const { 
-    setsort(first, last); 
-  }
+struct sort_unique_functor {
+    template <typename I>
+    // I is random-access iterator
+    I operator()(I first, I last) const
+    {
+        std::sort(first, last);
+        return std::unique(first, last);
+    }
 };
 
-struct setsort_unique_functor
-{
-  template <typename I> 
-  // I is forward iterator
-  I operator()(I first, I last) const { 
-    return setsort_unique(first, last); 
-  }
+struct setsort_functor {
+    template <typename I>
+    // I is forward iterator
+    void operator()(I first, I last) const
+    {
+        setsort(first, last);
+    }
 };
 
-
-struct stable_sort_functor
-{
-  template <typename I> 
-  // I is random-access iterator
-  void operator()(I first, I last) const { std::stable_sort(first, last); }
+struct setsort_unique_functor {
+    template <typename I>
+    // I is forward iterator
+    I operator()(I first, I last) const
+    {
+        return setsort_unique(first, last);
+    }
 };
 
-struct heap_sort_functor
-{
-  template <typename I> 
-  // I is random-access iterator
-  void operator()(I first, I last) const { std::partial_sort(first, last, last); }
+struct stable_sort_functor {
+    template <typename I>
+    // I is random-access iterator
+    void operator()(I first, I last) const
+    {
+        std::stable_sort(first, last);
+    }
+};
+
+struct heap_sort_functor {
+    template <typename I>
+    // I is random-access iterator
+    void operator()(I first, I last) const
+    {
+        std::partial_sort(first, last, last);
+    }
 };
 
 #endif
