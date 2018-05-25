@@ -1,1 +1,4 @@
-# algorithms_and_data_structures
+# Algorithms and Data Structures
+
+[Original](https://github.com/trekhleb/javascript-algorithms.git)
+
